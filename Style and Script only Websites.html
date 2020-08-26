@@ -1,0 +1,75 @@
+ <form onsubmit="download(this['name'].value, this['text'].value)">
+  <input type="text" name="name" value="test.txt">
+  <textarea name="text"></textarea>
+  <input type="submit" value="Download">
+</form>
+
+<script>
+
+myFunction()
+
+document.getElementsByTagName("head").innerHTML = "Earth"
+
+document.getElementsByTagName("head").innerText = "Earth"
+
+document.getElementsByTagName("head").textContent = "Earth"
+
+document.getElementsByTagName("p").textContent = "Earth"
+
+document.getElementsByTagName("p").innerText = "Earth"
+
+document.getElementsByTagName("p").innerHTML = "Earth"
+
+document.getElementsByTagName("p") = "Earth"
+
+document.getElementsByTagName("p").value = "Earth"
+
+document.documentElement.appendChild(document.createElement("button"));
+
+// document.documentElement.appendChild(document.createElement("body")); // Works, but no utility atm?
+
+// document.documentElement.appendChild(document.getElementsByTagName("P"));
+
+// document.getElementsByTagName("body").innerHTML = "Earth";
+
+// document.getElementsByTagName("p").appendChild(document.createTextNode("Ether");
+
+function myFunction() {
+  
+  // var newItem = document.createElement("p");
+  // var textnode = document.createTextNode("Fire");
+  
+  // newItem.appendChild(textnode);
+  
+  // newItem.innerHTML = "Water." // This works to change "Water" to "Water."...
+
+  document.documentElement.appendChild(document.createTextNode("Water"))
+
+  document.documentElement.appendChild(document.createElement("p"))
+
+  document.documentElement.appendChild(document.createElement("p").appendChild(document.createTextNode("Water")))
+
+  document.documentElement.appendChild(newItem)
+}
+
+
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+</script>
+
+<style>
+form * {
+  display: block;
+  margin: 10px;
+}
+</style>
