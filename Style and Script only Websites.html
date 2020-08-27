@@ -1,10 +1,26 @@
- <form onsubmit="download(this['name'].value, this['text'].value)">
+<form display="block", margin=10px, onsubmit="download(this['name'].value, this['text'].value)">
   <input type="text" name="name" value="test.txt">
   <textarea name="text"></textarea>
   <input type="submit" value="Download">
 </form>
 
 <script>
+// I guess I gotta use setAttribute. Can't set mulitple attributes at Creation. *Sigh.*
+
+function createFullElement (name, attributeNames, attributeSettings) {
+  var ele = document.createElement(name);
+  for (let i = 0; i < attributeNames.length; i++) {
+    ele.setAttribute(attributeNames[i], attributeSettings[i]);
+  }
+  return ele;
+}
+
+function download(filename, text) {
+  var element = createFullElement('a', ['href', 'download'], ['data:text/plain;charset=utf-8,' + encodeURIComponent(text), filename]);
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
 
 myFunction()
 
@@ -35,6 +51,8 @@ document.documentElement.appendChild(document.createElement("button"));
 // document.getElementsByTagName("p").appendChild(document.createTextNode("Ether");
 
 function myFunction() {
+
+  createFullElement (name, attributeNames, attributeSettings) 
   
   // var newItem = document.createElement("p");
   // var textnode = document.createTextNode("Fire");
@@ -51,25 +69,4 @@ function myFunction() {
 
   document.documentElement.appendChild(newItem)
 }
-
-
-function download(filename, text) {
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', filename);
-
-  element.style.display = 'none';
-  document.body.appendChild(element);
-
-  element.click();
-
-  document.body.removeChild(element);
-}
 </script>
-
-<style>
-form * {
-  display: block;
-  margin: 10px;
-}
-</style>
