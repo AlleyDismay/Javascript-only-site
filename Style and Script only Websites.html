@@ -1,8 +1,12 @@
-<form display="block", margin=10px, onsubmit="download(this['name'].value, this['text'].value)">
+<form onsubmit="download(this['name'].value, this['text'].value)">
+<!-- <form margin=10px, onsubmit="download(this['name'].value, this['text'].value)"> -->
+<!-- <form display="block", margin=10px, onsubmit="download(this['name'].value, this['text'].value)"> -->
   <input type="text" name="name" value="test.txt">
   <textarea name="text"></textarea>
   <input type="submit" value="Download">
 </form>
+
+<p innerText="Fire!">
 
 <script>
 // I guess I gotta use setAttribute. Can't set mulitple attributes at Creation. *Sigh.*
@@ -25,25 +29,29 @@ function download(filename, text) {
   document.body.removeChild(element);
 }
 
+ document.getElementsByTagName("form").setAttribute("display", "block");
+
+// .appendChild(createFullElement("p", ["value"], ["Water."]))
+
 myFunction()
 
-document.getElementsByTagName("head").innerHTML = "Earth"
+//document.getElementsByTagName("head").innerHTML = "Earth"
 
-document.getElementsByTagName("head").innerText = "Earth"
+//document.getElementsByTagName("head").innerText = "Earth"
 
-document.getElementsByTagName("head").textContent = "Earth"
+//document.getElementsByTagName("head").textContent = "Earth"
 
-document.getElementsByTagName("p").textContent = "Earth"
+//document.getElementsByTagName("p").textContent = "Earth"
 
-document.getElementsByTagName("p").innerText = "Earth"
+//document.getElementsByTagName("p").innerText = "Earth"
 
-document.getElementsByTagName("p").innerHTML = "Earth"
+//document.getElementsByTagName("p").innerHTML = "Earth"
 
-document.getElementsByTagName("p") = "Earth"
+//document.getElementsByTagName("p") = "Earth"
 
-document.getElementsByTagName("p").value = "Earth"
+//document.getElementsByTagName("p").value = "Earth"
 
-document.documentElement.appendChild(document.createElement("button"));
+//document.documentElement.appendChild(document.createElement("button"));
 
 // document.documentElement.appendChild(document.createElement("body")); // Works, but no utility atm?
 
@@ -55,7 +63,7 @@ document.documentElement.appendChild(document.createElement("button"));
 
 function myFunction() {
 
-  createFullElement (name, attributeNames, attributeSettings) 
+  // createFullElement (name, attributeNames, attributeSettings) 
   
   // var newItem = document.createElement("p");
   // var textnode = document.createTextNode("Fire");
@@ -64,13 +72,14 @@ function myFunction() {
   
   // newItem.innerHTML = "Water." // This works to change "Water" to "Water."...
 
-  document.documentElement.appendChild(document.createTextNode("Water"))
+  // document.documentElement.appendChild(newItem);
 
-  document.documentElement.appendChild(document.createElement("p"))
+  // document.documentElement.appendChild(document.createTextNode("Water"))
+
+  // document.documentElement.appendChild(document.createElement("p"))
 
   document.documentElement.appendChild(document.createElement("p").appendChild(document.createTextNode("Water")))
 
-  document.documentElement.appendChild(newItem)
 }
 </script>
 
