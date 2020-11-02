@@ -1,0 +1,39 @@
+<form display="block", margin=10px, onsubmit="download(this['name'].value, this['text'].value)">
+  <input type="text" name="name" value="test.txt">
+  <textarea name="text"></textarea>
+  <input type="submit" value="Download">
+</form>
+
+<script>
+// I guess I gotta use setAttribute. Can't set mulitple attributes at Creation. *Sigh.*
+//
+// Remember, NoScript can stop these scripts from working!
+//
+
+function appendChildren (parent, children) {
+  children.forEach((item) => {parent.appendChild(item)});
+}
+
+function createFullElement (name, attributeNames, attributeSettings) {
+  var ele = document.createElement(name);
+  attributeNames.forEach((item, index) => 
+    {ele.setAttribute(item, attributeSettings[index])}
+  );
+  return ele;
+}
+
+var e = createFullElement("form", ["display", "margin", "onsubmit"], ["block", "10px", "download(this['name'].value, this['text'].value)"]);
+
+var input = createFullElement("textarea", ["name"], ["text"]);
+
+appendChildren (e, [input])
+
+document.documentElement.appendChild(e);
+
+function download(filename, text) {
+  var element = createFullElement('a', ['href', 'download'], ['data:text/plain;charset=utf-8,' + encodeURIComponent(text), filename]);
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+</script>
